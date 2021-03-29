@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -22,8 +23,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
         window?.isHidden = false
-//        let safari = BFBSafariViewController(url: URL(string: "https://www.baidu.com")!)
-        let safari = ViewController(URL(string: "http://bankofbook.com/")!)
+        let config = SFSafariViewController.Configuration();
+        let safari = SFViewController(url: URL(string: "http://bankofbook.com/")!, configuration: config)
+//        let safari = ViewController(URL(string: "http://bankofbook.com/")!)
         safari.view.insetsLayoutMarginsFromSafeArea = false
         self.window?.rootViewController = safari
         self.window?.makeKeyAndVisible()

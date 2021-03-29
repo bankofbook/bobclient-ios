@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,8 @@
 		1F5E858B261176F000237A64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F5E8589261176F000237A64 /* LaunchScreen.storyboard */; };
 		1F5E859626117B1200237A64 /* BFBSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5E859526117B1200237A64 /* BFBSafariViewController.swift */; };
 		1F5E859A261190A100237A64 /* MyWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5E8599261190A100237A64 /* MyWebView.swift */; };
+		1F5E85BF2611B6EB00237A64 /* SFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5E85BE2611B6EB00237A64 /* SFViewController.swift */; };
+		30DB4FA557B50DC89C7FAEAE /* Pods_BankOfBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F6115F89622BC5833693507 /* Pods_BankOfBook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,10 @@
 		1F5E85932611771100237A64 /* BankOfBook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BankOfBook.entitlements; sourceTree = "<group>"; };
 		1F5E859526117B1200237A64 /* BFBSafariViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BFBSafariViewController.swift; sourceTree = "<group>"; };
 		1F5E8599261190A100237A64 /* MyWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWebView.swift; sourceTree = "<group>"; };
+		1F5E85BE2611B6EB00237A64 /* SFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFViewController.swift; sourceTree = "<group>"; };
+		2E632F54C59EE547A1080BBA /* Pods-BankOfBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankOfBook.release.xcconfig"; path = "Target Support Files/Pods-BankOfBook/Pods-BankOfBook.release.xcconfig"; sourceTree = "<group>"; };
+		2F6115F89622BC5833693507 /* Pods_BankOfBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankOfBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		727DCC54FE490A04948B88DA /* Pods-BankOfBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankOfBook.debug.xcconfig"; path = "Target Support Files/Pods-BankOfBook/Pods-BankOfBook.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30DB4FA557B50DC89C7FAEAE /* Pods_BankOfBook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +54,8 @@
 			children = (
 				1F5E857D261176EE00237A64 /* BankOfBook */,
 				1F5E857C261176EE00237A64 /* Products */,
+				C0DA2F97051FAC073F99DB2F /* Pods */,
+				A79434E8E74431E6CF69A603 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,6 +74,7 @@
 				1F5E857E261176EE00237A64 /* AppDelegate.swift */,
 				1F5E8580261176EE00237A64 /* SceneDelegate.swift */,
 				1F5E8582261176EE00237A64 /* ViewController.swift */,
+				1F5E85BE2611B6EB00237A64 /* SFViewController.swift */,
 				1F5E8599261190A100237A64 /* MyWebView.swift */,
 				1F5E859526117B1200237A64 /* BFBSafariViewController.swift */,
 				1F5E8584261176EE00237A64 /* Main.storyboard */,
@@ -75,6 +85,23 @@
 			path = BankOfBook;
 			sourceTree = "<group>";
 		};
+		A79434E8E74431E6CF69A603 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2F6115F89622BC5833693507 /* Pods_BankOfBook.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C0DA2F97051FAC073F99DB2F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				727DCC54FE490A04948B88DA /* Pods-BankOfBook.debug.xcconfig */,
+				2E632F54C59EE547A1080BBA /* Pods-BankOfBook.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +109,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F5E858F261176F000237A64 /* Build configuration list for PBXNativeTarget "BankOfBook" */;
 			buildPhases = (
+				5A43DA794B08CFFB4AFBE33E /* [CP] Check Pods Manifest.lock */,
 				1F5E8577261176EE00237A64 /* Sources */,
 				1F5E8578261176EE00237A64 /* Frameworks */,
 				1F5E8579261176EE00237A64 /* Resources */,
+				678F74EAAF6BAF988EAF1F9F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -140,6 +169,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5A43DA794B08CFFB4AFBE33E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BankOfBook-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		678F74EAAF6BAF988EAF1F9F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BankOfBook/Pods-BankOfBook-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BankOfBook/Pods-BankOfBook-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BankOfBook/Pods-BankOfBook-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1F5E8577261176EE00237A64 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -150,6 +221,7 @@
 				1F5E859A261190A100237A64 /* MyWebView.swift in Sources */,
 				1F5E8581261176EE00237A64 /* SceneDelegate.swift in Sources */,
 				1F5E859626117B1200237A64 /* BFBSafariViewController.swift in Sources */,
+				1F5E85BF2611B6EB00237A64 /* SFViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +365,7 @@
 		};
 		1F5E8590261176F000237A64 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 727DCC54FE490A04948B88DA /* Pods-BankOfBook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -306,7 +379,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yanqing.BankOfBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -314,6 +387,7 @@
 		};
 		1F5E8591261176F000237A64 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E632F54C59EE547A1080BBA /* Pods-BankOfBook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -327,7 +401,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yanqing.BankOfBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
