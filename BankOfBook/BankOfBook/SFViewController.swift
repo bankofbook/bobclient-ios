@@ -7,19 +7,14 @@
 
 import UIKit
 import SafariServices
-#if os(OSX)
-
-#else
 import SwiftHEXColors
-#endif
 class SFViewController: SFSafariViewController {
     
     override init(url URL: URL, configuration: SFSafariViewController.Configuration) {
         super.init(url: URL, configuration: configuration)
-        #if os(iOS)
-        self.preferredBarTintColor = UIColor(hexString: "#70BAE0") // UIColor.red// #70BAE0
-        #endif
+        self.preferredBarTintColor = UIColor(hexString: "#70BAE0")
         self.preferredControlTintColor = UIColor.white
+        
         self.dismissButtonStyle = .close
         self.delegate = self
     }

@@ -17,15 +17,10 @@ class MyWebView: WKWebView {
     }
     */
     override init(frame: CGRect, configuration: WKWebViewConfiguration) {
-//        let config = configuration
-//        let userContentController = WKUserContentController()
-//        let userScript = WKUserScript(source: "<meta name=\"viewport\" content=\"viewport-fit=cover\"/>", injectionTime: WKUserScriptInjectionTime.atDocumentEnd, forMainFrameOnly: true)
-//        userContentController.addUserScript(userScript)
-//        config.userContentController = userContentController
 
         super.init(frame: frame, configuration: configuration)
         self.insetsLayoutMarginsFromSafeArea = false
-        self.backgroundColor = UIColor.red
+        self.backgroundColor = UIColor.white
         self.scrollView.contentInsetAdjustmentBehavior = .never
     }
     
