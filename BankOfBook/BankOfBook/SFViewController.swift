@@ -43,10 +43,6 @@ extension SFViewController : SFSafariViewControllerDelegate {
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         debugPrint(#function)
         UIApplication.shared.perform(NSSelectorFromString("suspend"))
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            exit(0)
-        }
- 
     }
     
     func safariViewController(_ controller: SFSafariViewController, didCompleteInitialLoad didLoadSuccessfully: Bool) {

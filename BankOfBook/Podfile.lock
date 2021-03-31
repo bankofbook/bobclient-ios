@@ -5,12 +5,12 @@ DEPENDENCIES:
   - SwiftHEXColors
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - SwiftHEXColors
 
 SPEC CHECKSUMS:
   SwiftHEXColors: 1cb6e5d55c52749aa33db8f088ac55eb71ca4c7f
 
-PODFILE CHECKSUM: 081c59873dace988144c9c01677fc3c5579b6917
+PODFILE CHECKSUM: 2ae97456db168268c274013bfcdeca4129b9f309
 
-COCOAPODS: 1.7.4
+COCOAPODS: 1.10.0
