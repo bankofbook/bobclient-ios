@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 class ViewController: UIViewController {
-    
+//
     override func loadView() {
         let config = WKWebViewConfiguration()
         config.userContentController = WKUserContentController()
@@ -41,6 +41,34 @@ class ViewController: UIViewController {
         self.myView?.configuration.userContentController.removeScriptMessageHandler(forName: "jsCallNativeMethod")
     }
 
+ 
+    
+    func share(_ title : String , urlStr : String) {
+        
+        let image = UIImage(named: "AppIcon")
+        var items = [Any]()
+        let url = URL(string: urlStr)
+        items.append(url)
+        items.append(title)
+        items.append(image)
+        let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        controller.completionWithItemsHandler = {( type , completed , items , error) in
+            
+        }
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+    fileprivate  func getAppIcon() -> String? {
+        let info = Bundle.main.infoDictionary
+        if let dict = info?["CFBundleIcons"] as? [String : Any]{
+            if let dict = dict["CFBundlePrimaryIcon"] as? [String : Any] {
+                if let icons = dict["CFBundleIconFiles"] as? [String] {
+                    return icons.last
+                }
+            }
+        }
+        return nil
+    }
 }
 
 extension ViewController : WKScriptMessageHandler {
@@ -53,6 +81,9 @@ extension ViewController : WKScriptMessageHandler {
         do {
             if let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] {
                 debugPrint(dict)
+                guard let title = dict["title"] as? String else  { return }
+                guard let url = dict["url"] as? String else { return }
+                share(title, urlStr: url)
             }
             
         } catch {

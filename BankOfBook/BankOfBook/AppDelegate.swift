@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.main.bounds)
         window?.isHidden = false
-        let config = SFSafariViewController.Configuration();
+//        let config = SFSafariViewController.Configuration();
+ 
 //        let safari = SFViewController(url: URL(string: "http://bankofbook.com/")!, configuration: config)
         let safari = ViewController(URL(string: "http://bankofbook.com/")!)
         safari.view.insetsLayoutMarginsFromSafeArea = false
