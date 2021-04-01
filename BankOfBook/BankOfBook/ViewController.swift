@@ -26,7 +26,17 @@ class ViewController: UIViewController {
     var myView: WKWebView? {
         return self.view as? WKWebView
     }
- 
+    
+    var modelName: String {
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        let machineMirror = Mirror(reflecting: systemInfo.machine)
+        let identifier = machineMirror.children.reduce("") { identifier, element in
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
+            return identifier + String(UnicodeScalar(UInt8(value)))
+        }
+        return identifier
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
@@ -34,7 +44,19 @@ class ViewController: UIViewController {
         guard let url = self.url else {
             return
         }
-        self.myView?.load(URLRequest(url: url))
+        let version = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
+        let customUA =  "bbc.ios.v." + version + "." + modelName
+//        let baseAgent = (self.myView?.value(forKeyPath: "applicationNameForUserAgent") as? String) ?? ""
+        let userAgent = customUA
+        self.myView?.evaluateJavaScript("navigator.userAgent") {[weak self] (result, error) in
+            let oldAgent = result as? String ?? ""
+            let newAgent = userAgent + "(\(oldAgent))"
+            UserDefaults.standard.register(defaults: ["UserAgent":newAgent])
+            UserDefaults.standard.synchronize()
+            self?.myView?.customUserAgent = newAgent
+            self?.myView?.load(URLRequest(url: url))
+
+        }
     }
     
     deinit {
