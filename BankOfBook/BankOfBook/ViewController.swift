@@ -45,12 +45,12 @@ class ViewController: UIViewController {
     
     func share(_ title : String , urlStr : String) {
         
-        let image = UIImage(named: "AppIcon")
+        let image = UIImage(named: "icon")
         var items = [Any]()
         let url = URL(string: urlStr)
-        items.append(url)
-        items.append(title)
         items.append(image)
+        items.append(title)
+        items.append(url)
         let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
         controller.completionWithItemsHandler = {( type , completed , items , error) in
             

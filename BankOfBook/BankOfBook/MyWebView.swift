@@ -23,7 +23,7 @@ class MyWebView: WKWebView {
         self.backgroundColor = UIColor.white
         self.scrollView.contentInsetAdjustmentBehavior = .never
         self.scrollView.showsVerticalScrollIndicator = false
-        self.scrollView.bounces = false
+//        self.scrollView.bounces = false
     }
     
     required init?(coder: NSCoder) {
