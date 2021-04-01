@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         window?.isHidden = false
         let config = SFSafariViewController.Configuration();
-        let safari = SFViewController(url: URL(string: "http://bankofbook.com/")!, configuration: config)
-//        let safari = ViewController(URL(string: "http://bankofbook.com/")!)
+//        let safari = SFViewController(url: URL(string: "http://bankofbook.com/")!, configuration: config)
+        let safari = ViewController(URL(string: "http://bankofbook.com/")!)
         safari.view.insetsLayoutMarginsFromSafeArea = false
         self.window?.rootViewController = safari
         self.window?.makeKeyAndVisible()
