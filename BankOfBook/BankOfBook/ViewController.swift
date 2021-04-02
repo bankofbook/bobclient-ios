@@ -7,15 +7,9 @@
 
 import UIKit
 import WebKit
+import SnapKit
 class ViewController: UIViewController {
-//
-    override func loadView() {
-        let config = WKWebViewConfiguration()
-        config.userContentController = WKUserContentController()
-        config.userContentController.add(self, name: "jsCallNativeMethod")
-        let webView = MyWebView(frame: UIScreen.main.nativeBounds, configuration: config)
-        self.view = webView
-    }
+ 
     var url : URL?
     
     convenience init(_ url : URL) {
@@ -23,9 +17,22 @@ class ViewController: UIViewController {
         self.url = url
     }
     
-    var myView: WKWebView? {
-        return self.view as? WKWebView
-    }
+    lazy var webView: MyWebView = {
+        let config = WKWebViewConfiguration()
+        config.websiteDataStore = WKWebsiteDataStore.default()
+        config.userContentController = WKUserContentController()
+        config.userContentController.add(self, name: "jsCallNativeMethod")
+        let webView = MyWebView(frame: UIScreen.main.nativeBounds, configuration: config)
+        webView.navigationDelegate = self
+        return webView
+    }()
+    
+    lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(named: "splash")
+        return imageView
+    }()
     
     var modelName: String {
         var systemInfo = utsname()
@@ -40,27 +47,33 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-        // Do any additional setup after loading the view.
+        self.view.addSubview(webView)
+        webView.snp.makeConstraints { (maker) in
+            maker.edges.equalToSuperview()
+        }
+        self.view.addSubview(self.imageView)
+        self.imageView.snp.makeConstraints { (maker) in
+            maker.edges.equalToSuperview()
+        }
         guard let url = self.url else {
             return
         }
         let version = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
         let customUA =  "bbc.ios.v." + version + "." + modelName
-//        let baseAgent = (self.myView?.value(forKeyPath: "applicationNameForUserAgent") as? String) ?? ""
         let userAgent = customUA
-        self.myView?.evaluateJavaScript("navigator.userAgent") {[weak self] (result, error) in
+        self.webView.evaluateJavaScript("navigator.userAgent") {[weak self](result, error) in
             let oldAgent = result as? String ?? ""
             let newAgent = userAgent + "(\(oldAgent))"
             UserDefaults.standard.register(defaults: ["UserAgent":newAgent])
             UserDefaults.standard.synchronize()
-            self?.myView?.customUserAgent = newAgent
-            self?.myView?.load(URLRequest(url: url))
+            self?.webView.customUserAgent = newAgent
+            self?.webView.load(URLRequest(url: url))
 
         }
     }
     
     deinit {
-        self.myView?.configuration.userContentController.removeScriptMessageHandler(forName: "jsCallNativeMethod")
+        self.webView.configuration.userContentController.removeScriptMessageHandler(forName: "jsCallNativeMethod")
     }
 
  
@@ -93,12 +106,10 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController : WKScriptMessageHandler {
+extension ViewController : WKScriptMessageHandler , WKNavigationDelegate{
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
          debugPrint(message)
-        guard let body = message.body as? String else {
-            return
-        }
+        guard let body = message.body as? String else { return }
         guard  let data = body.data(using: String.Encoding.utf8) else { return }
         do {
             if let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] {
@@ -113,5 +124,14 @@ extension ViewController : WKScriptMessageHandler {
         }
     }
     
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            self?.imageView.isHidden = true
+        } completion: {[weak self] (_) in
+            self?.imageView.removeFromSuperview()
+        }
+
+        
+    }
     
 }
