@@ -125,13 +125,7 @@ extension ViewController : WKScriptMessageHandler , WKNavigationDelegate{
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        UIView.animate(withDuration: 0.5) { [weak self] in
-            self?.imageView.isHidden = true
-        } completion: {[weak self] (_) in
-            self?.imageView.removeFromSuperview()
-        }
-
-        
+        self.imageView.removeFromSuperview()
     }
     
 }
