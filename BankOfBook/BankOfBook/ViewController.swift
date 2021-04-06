@@ -54,7 +54,7 @@ class ViewController: UIViewController {
         guard let url = self.url else {
             return
         }
-        let version = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
         let customUA =  "bbc.ios.v." + version + "." + modelName
         let userAgent = customUA
         self.webView.evaluateJavaScript("navigator.userAgent") {[weak self](result, error) in
@@ -64,6 +64,7 @@ class ViewController: UIViewController {
             UserDefaults.standard.synchronize()
             self?.webView.customUserAgent = newAgent
             self?.webView.load(URLRequest(url: url))
+            debugPrint(newAgent)
 
         }
     }
