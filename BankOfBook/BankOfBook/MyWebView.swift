@@ -1,10 +1,4 @@
-//
-//  MyWebView.swift
-//  BankOfBook
-//
-//  Created by xdf_yanqing on 3/29/21.
-//
-
+ 
 import WebKit
 
 class MyWebView: WKWebView {

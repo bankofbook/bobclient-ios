@@ -1,10 +1,4 @@
-//
-//  AppDelegate.swift
-//  BankOfBook
-//
-//  Created by xdf_yanqing on 3/29/21.
-//
-
+ 
 import UIKit
 import SafariServices
 @main
