@@ -30,6 +30,7 @@ class ViewController: UIViewController {
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .white
         imageView.image = UIImage(named: "splash")
         return imageView
     }()
@@ -125,7 +126,9 @@ extension ViewController : WKScriptMessageHandler , WKNavigationDelegate{
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        self.imageView.removeFromSuperview()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+            self.imageView.removeFromSuperview()
+        }
     }
     
 }
